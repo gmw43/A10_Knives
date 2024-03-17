@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+// import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import NavbarWithSearch from './SharedComp/Navbar'
@@ -8,10 +8,7 @@ function App() {
   return (
     <>
       <NavbarWithSearch />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="Home" element={<Home />} />
-      </Routes>
+      <Home />
     </>
   )
 }
