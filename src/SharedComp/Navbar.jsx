@@ -1,143 +1,162 @@
 import React from 'react'
-import {
-  Navbar,
-  Collapse,
-  Typography,
-  Button,
-  IconButton,
-  Input,
-} from '@material-tailwind/react'
+import logo from '../assets/images/company-logo.png'
+import { Link } from 'react-router-dom'
+import DropdownItem from './Dropdown'
 
-const NavbarWithSearch = () => {
-  const [openNav, setOpenNav] = React.useState(false)
-
-  const NavLinks = [
-    { link: 'Home' },
-    { link: 'About Us' },
-    { link: 'Category' },
-    { link: 'Contact Us' },
-  ]
-
-  React.useEffect(() => {
-    window.addEventListener(
-      'resize',
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    )
-  }, [])
-
-  const navList = (
-    <ul className="mt-2 mb-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {NavLinks.map((item, index) => {
-        return (
-          <Typography
-            as="li"
-            variant="small"
-            color="white"
-            className="flex items-center gap-x-2 p-1 font-medium"
-            key={index}
-          >
-            <a href="#" className="flex items-center text-lg">
-              {item.link}
-            </a>
-          </Typography>
-        )
-      })}
-    </ul>
-  )
-
+const HeaderNavbar = () => {
+  const Category = {
+    C1: 'Category 1',
+    C2: 'Category 2',
+    C3: 'Category 3',
+  }
   return (
-    <Navbar
-      className="w-full rounded-none z-10 max-w-full border-0  bg-transparent px-4 py-4 lg:px-8 lg:py-4 backdrop-saturate-10 backdrop-blur-none shadow-none fixed "
-      style={{ backgroundColor: 'transparent' }}
-    >
-      <div className="container mx-auto flex flex-wrap items-center justify-between text-white">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 cursor-pointer py-1.5 text-2xl"
-        >
-          A10 Knives
-        </Typography>
-        <div className="hidden lg:block">{navList}</div>
-        <div className="hidden items-center gap-x-2 lg:flex">
-          <div className="relative flex w-full gap-2 md:w-max">
-            <Input
-              type="search"
-              placeholder="Search"
-              containerProps={{
-                className: 'min-w-[220px] ',
-              }}
-              className="  text-white "
-            />
-          </div>
-          <Button size="md" className="rounded-lg text-white  ">
-            Search
-          </Button>
-        </div>
-        <IconButton
-          variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          ripple={false}
-          onClick={() => setOpenNav(!openNav)}
-        >
-          {openNav ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </IconButton>
-      </div>
-      <Collapse open={openNav}>
-        <div className="container mx-auto">
-          {navList}
-          <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center">
-            <div className="relative w-full gap-2 md:w-max">
-              <Input
-                type="search"
-                placeholder="Search"
-                containerProps={{
-                  className: 'min-w-[288px]',
-                }}
-                className=" !border-t-white-300 pl-9 placeholder:text-white-300 focus:!border-white-300"
-                labelProps={{
-                  className: 'before:content-none after:content-none',
-                }}
-              />
-              <div className="!absolute left-3 top-[13px]"></div>
+    <>
+      <nav className="bg-transparent z-10 fixed w-full">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="relative flex h-16 items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              {/* <!-- Mobile menu button--> */}
+              <button
+                type="button"
+                className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+              >
+                {/* <!--
+            Icon when menu is closed.
+
+            Menu open: "hidden", Menu closed: "block"
+          --> */}
+                <svg
+                  className="block h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+                {/* <!--
+            Icon when menu is open.
+
+            Menu open: "block", Menu closed: "hidden"
+          --> */}
+                <svg
+                  className="hidden h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
-            <Button size="md" className="mt-1 rounded-lg sm:mt-0">
-              Search
-            </Button>
+            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex flex-shrink-0 items-center">
+                <img className=" w-[100px]" src={logo} alt="Your Company" />
+              </div>
+              <div className="hidden sm:ml-6 sm:block">
+                <div className="flex space-x-4">
+                  {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+                  <Link
+                    to="/Home"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg leading-10 p-0 mt-[8px] font-medium"
+                    aria-current="page"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="#"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg leading-10 p-0 mt-[8px] font-medium"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to="#"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg leading-10 p-0 mt-[8px] font-medium"
+                  >
+                    <DropdownItem Category={Category} />
+                  </Link>
+                  <Link
+                    to="#"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg leading-10 p-0 mt-[8px] font-medium"
+                  >
+                    Contact us
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <button
+                type="button"
+                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                <span className="absolute -inset-1.5"></span>
+                <span className="sr-only">View notifications</span>
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </Collapse>
-    </Navbar>
+
+        {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+        <div className="sm:hidden" id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+            <Link
+              to="#"
+              className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page"
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="#"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Team
+            </Link>
+            <Link
+              to="#"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Projects
+            </Link>
+            <Link
+              to="#"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Calendar
+            </Link>
+          </div>
+        </div>
+      </nav>
+    </>
   )
 }
 
-export default NavbarWithSearch
+export default HeaderNavbar
