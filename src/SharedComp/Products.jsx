@@ -6,10 +6,35 @@ import sofa from '../assets/images/sofa.jpeg'
 
 const Products = [
   {
+    img: sofa,
+    title: 'Sofa',
+    Category: 'Furniture',
+    Price: '580',
+    desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    action: 'Remove',
+  },
+  {
     img: head,
     title: 'HeadPhone',
     Category: 'Electronics',
     Price: '380',
+    desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    action: 'Remove',
+  },
+
+  {
+    img: hood,
+    title: 'Black Hoodie',
+    Category: 'Graments',
+    Price: '180',
+    desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    action: 'Remove',
+  },
+  {
+    img: sofa,
+    title: 'Sofa',
+    Category: 'Furniture',
+    Price: '580',
     desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
     action: 'Remove',
   },
@@ -26,22 +51,6 @@ const Products = [
     title: 'HeadPhone',
     Category: 'Electronics',
     Price: '480',
-    desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    action: 'Remove',
-  },
-  {
-    img: hood,
-    title: 'Black Hoodie',
-    Category: 'Graments',
-    Price: '180',
-    desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    action: 'Remove',
-  },
-  {
-    img: sofa,
-    title: 'Sofa',
-    Category: 'Furniture',
-    Price: '580',
     desc: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
     action: 'Remove',
   },
