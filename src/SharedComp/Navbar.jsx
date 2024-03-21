@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import logo from '../assets/images/company-logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DropdownItem from './Dropdown'
 import { ShoppingCartOutlined } from '@ant-design/icons'
+import { DataToCart } from '../SharedComp/GlobalComp'
 
 const HeaderNavbar = () => {
   const [menu, setMenu] = useState(false)
+  const navigate = useNavigate()
 
   function handleMenu() {
     setMenu(!menu)
   }
+
+  const { AddData } = useContext(DataToCart)
 
   const Category = {
     C1: 'Category 1',
@@ -17,7 +21,6 @@ const HeaderNavbar = () => {
     C3: 'Category 3',
   }
 
-  const counter = 0
   return (
     <>
       <nav className=" z-10 fixed w-full">
@@ -85,16 +88,23 @@ const HeaderNavbar = () => {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <ShoppingCartOutlined
-                style={{
-                  color: 'white',
-                  fontSize: '25px',
-                  paddingRight: '1rem',
-                  position: 'relative',
+              <span
+                onClick={() => {
+                  navigate('/AddCart')
                 }}
-              />
+                className=" cursor-pointer"
+              >
+                <ShoppingCartOutlined
+                  style={{
+                    color: 'white',
+                    fontSize: '25px',
+                    paddingRight: '1rem',
+                    position: 'relative',
+                  }}
+                />
+              </span>
               <sup className="text-white bg-blue-400 px-1 py-2 rounded-full absolute  top-3 right-2 ">
-                {counter}
+                {AddData.length}
               </sup>
             </div>
           </div>

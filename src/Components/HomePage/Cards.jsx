@@ -9,10 +9,13 @@ import '../Styles/Slider.css'
 import { DataToCart } from '../../SharedComp/GlobalComp'
 
 const Cards = () => {
-  // const { AddData, setAddData } = useContext(DataToCart)
-  const [overview, setOverview] = useState([])
-  const Navigate = useNavigate()
+  const { AddData, setAddData } = useContext(DataToCart)
 
+  // const Navigate = useNavigate()
+
+  // function handleNavigate(item) {
+  //   Navigate('/Overview', { state: item })
+  // }
   var settings = {
     dots: true,
     infinite: false,
@@ -129,17 +132,16 @@ const Cards = () => {
                       </p>
                     </div>
                   </div>
-                  <Link to={'/AddCart'}>
-                    <button
-                      className="w-full  border-2 border-black my-4 py-2 transition ease-in-out delay-150  hover:-translate-y-.2 hover:scale-110 hover:bg-orange-300 duration-500 hover:border-none hover:text-white rounded-md"
-                      onClick={() => {
-                        setOverview([...overview, item])
-                        Navigate('/AddCart', { state: overview })
-                      }}
-                    >
-                      Shop Now
-                    </button>
-                  </Link>
+                  {/* <Link to={'/Overview'}> */}
+                  <button
+                    className="w-full  border-2 border-black my-4 py-2 transition ease-in-out delay-150  hover:-translate-y-.2 hover:scale-110 hover:bg-orange-300 duration-500 hover:border-none hover:text-white rounded-md"
+                    onClick={() => {
+                      setAddData([...AddData, item])
+                    }}
+                  >
+                    Shop Now
+                  </button>
+                  {/* </Link> */}
                 </div>
               )
             })}
